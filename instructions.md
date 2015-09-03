@@ -2,6 +2,14 @@
     - Due Date: Sept 7, 2015
     - Submission Subject: Primer
 
+## Test on CSUN Servers
+```
+ssh ssh.csun.edu -l <username>
+cd web_drive/public_html
+mkdir cgi-bin
+chmod a+rx cgi-bin
+```
+
 ## General Submission Criteria
     - All laboratory assignments of must be submitted using git. In addition to the submission of the assignment, the following criteria must be meet for all assignments.
     - Your laboratory software project must be stored within a publically accessible git repository.  Given a URL, a pull request can be made.
