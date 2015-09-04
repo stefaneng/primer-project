@@ -1,5 +1,9 @@
 # Comp 490 Primer Project
 
+## Continous Integration
+  - [Deploy to server with scp](http://neemzy.org/articles/deploy-to-your-own-server-through-ssh-with-travis-ci)
+- [Build docker image in travis-ci](http://docs.travis-ci.com/user/docker/)
+
 ## Docker Usage
 ```
 docker build -t comp490-primer .
