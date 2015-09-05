@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#! /bin/bash
 
-print "X-COMP-490: ${USER}"
-print "Content-type: text/plain"
-print ""
+echo "X-COMP-490: ${USER}"
+echo "Content-type: text/plain"
+echo ""
 
-print "Hello world"
+echo "Hello world"

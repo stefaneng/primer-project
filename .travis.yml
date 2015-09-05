@@ -1,6 +1,6 @@
 sudo: required
 
-language: python
+language: bash
 
 services:
   - docker
@@ -12,4 +12,4 @@ before_install:
   - docker run stefaneng/comp490-primer /bin/sh -c "true"
 
 script:
-  - true
+  - curl localhost
