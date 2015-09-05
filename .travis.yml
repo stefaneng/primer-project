@@ -20,10 +20,11 @@ script:
   - curl -i localhost/cgi-bin/index.cgi
 
 after_success:
-  - tar -zcf package.tgz *
+  - tar -zcf package.tgz public_html
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH pwd
+  - sshpass -e scp -o stricthostkeychecking=no deploy.sh $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
 
 env:
   global:
