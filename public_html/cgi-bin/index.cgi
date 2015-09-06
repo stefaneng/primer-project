@@ -10,7 +10,7 @@ BODY="$(/usr/bin/curl -XPOST -H "Content-Type: text/plain" -H "Accept: applicati
 err=$?
 
 # Request to github was successful
-if [ err -eq 0 ]; then
+if [ $err -eq 0 ]; then
     echo "Content-type: text/html"
     echo ""
 
