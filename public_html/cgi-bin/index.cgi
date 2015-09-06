@@ -3,7 +3,24 @@
 CURR_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}")" && pwd)
 
 echo "X-COMP-490: ${USER}"
-echo "Content-type: text/plain"
 echo ""
 
-cat ${CURR_DIR}/../index.md
+# Post markdown file to github to get back html
+INDEX=${CURR_DIR}/../index.md
+
+BODY="$(curl -s -XPOST -H "Content-Type: text/plain" -H "Accept: application/vnd.github.v3+json" https://api.github.com/markdown/raw -d@${INDEX})"
+
+# Request to github was successful
+if [ $? -eq 0 ]; then
+    echo "Content-type: text/html"
+    echo ""
+
+    # Return the html
+    echo "${BODY}"
+else
+    echo "Content-type: text/plain"
+    echo ""
+
+    # Request was not successful, return markdown
+    cat ${INDEX}
+fi
