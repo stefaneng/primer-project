@@ -1,5 +1,7 @@
 # Comp 490 Primer Project
 
+Template from https://github.com/poole/poole
+
 ## Ideas
   - Write pages with markdown, and send to [github markdown api](https://developer.github.com/v3/markdown/) to render as html.
   - Describe docker in markdown as well.
