@@ -11,6 +11,7 @@ if [ "${QUERY_STRING}" = "raw=true" ]; then
     echo ""
     # Return markdown instead of html
     cat ${INDEX}
+    exit
 fi
 
 # Post markdown to github to render as html
@@ -28,9 +29,7 @@ if [ $err -eq 0 ]; then
 
     # Take the template from template.html and replace homemade templates
     # <!--BODY--> => ${BODY}
- #   echo "${TEMPLATE}" | perl -pe "s/<!--BODY-->/\Q${BODY}/g"
     echo "${TEMPLATE}" | sed "s/<!--BODY-->/$(echo $BODY | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\\&/g')/g"
-#    echo "${TEMPLATE}" | sed "s/<!--BODY-->/$(echo $BODY | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\\&/g')/g"
 else
     echo "Content-type: text/plain"
     echo ""
