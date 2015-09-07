@@ -1,6 +1,6 @@
 # Primer Project
 
-This is a primer project for Comp 490.
+This is the primer project for Comp 490.
 It is mostly documentation on the simple continuous integration/deployment of a github project using [travis-ci](https://travis-ci.org/) and [docker](https://www.docker.com/) for local testing.
 The backend is a cgi script that uses the [github markdown api](https://developer.github.com/v3/markdown/) to render markdown as html.
 Adding a query string of [`"?raw=true"`](http://www.csun.edu/~see93462/primer_project/cgi-bin/index.cgi?raw=true) will return the raw markdown.
@@ -31,7 +31,7 @@ Instead we can use a feature of Travis CI that allows us to encrypt environment 
 Then we can tell Travis CI to use `sshpass` to read from the environment variables instead of the command line.
 We can add variables to travis ci environment using the [`travis` command line tool](https://github.com/travis-ci/travis.rb).
 
-```
+```bash
 travis encrypt DEPLOY_HOST=ssh.csun.edu
 travis encrypt DEPLOY_PATH=/home/users11/see93462/comp490-primer-project
 travis encrypt DEPLOY_USER=<csun-username>
@@ -42,7 +42,7 @@ Paste those values under the `global` heading the `travis.yml` file.
 
 Now the `.travis.yml` should look something like:
 
-```
+```bash
 env:
   global:
     - secure: "..."
@@ -52,7 +52,7 @@ env:
 ```
 
 Now if we look at the [`package.sh`](https://github.com/stefaneng/primer-project/blob/master/package.sh) script,
-```
+```bash
 #! /bin/bash
 
 # Package all apache public stuff
