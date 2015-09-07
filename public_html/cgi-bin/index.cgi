@@ -24,12 +24,21 @@ if [ $err -eq 0 ]; then
     echo "Content-type: text/html"
     echo ""
 
-    # Return the html
-    TEMPLATE="$(cat ${CURR_DIR}/../template.html)"
+    # Return the html with templates replaced
+    while IFS='' read -r line || [[ -n "$line" ]]; do
+        case "$line" in
+            *"<!--BODY-->"*)
+                echo "$BODY"
+                ;;
+            *"<!--TIME-->"*)
+                date
+                ;;
+            *)
+                echo "$line"
+                ;;
+        esac
+    done < ${CURR_DIR}/../template.html
 
-    # Take the template from template.html and replace homemade templates
-    # <!--BODY--> => ${BODY}
-    echo "${TEMPLATE}" | sed "s/<!--BODY-->/$(echo $BODY | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\\&/g')/g"
 else
     echo "Content-type: text/plain"
     echo ""
